@@ -7,11 +7,12 @@ slider.addEventListener("input", _.debounce((event) => {
     image.style.height = `${slider.value}px`;
 }, 500));
 
-// 2 Завдання
-const sliderEl = document.querySelector(".slider__input");
-const imageEl = document.querySelector(".slider__image");
+const box = document.getElementById("box");
 
-sliderEl.addEventListener("input", _.debounce((e) => {
-    imageEl.style.width = `${sliderEl.value}px`;
-    imageEl.style.height = `${sliderEl.value}px`;
-}, 500));
+const moveBox = (e) => {
+  box.style.left = `${e.pageX - 25}px`; 
+  box.style.top = `${e.pageY - 25}px`; 
+};
+
+document.addEventListener("mousemove", _.throttle(moveBox, 50));
+
